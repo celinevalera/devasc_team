@@ -8,7 +8,7 @@ class MoviesApi(Resource):
     def get(self):
         movies = Movie.objects().to_json()
         return Response(movies, mimetype="application/json", status=200)
-
+    
     @jwt_required()
     def post(self):
         body = request.get_json()
@@ -22,7 +22,7 @@ class MovieApi(Resource):
     def put(self, id):
         body = request.get_json()
         Movie.objects.get(id=id).update(**body)
-        return 'Movie was successfully updates', 200
+        return 'Movie was successfully updated', 200
 
     @jwt_required()
     def delete(self, id):
